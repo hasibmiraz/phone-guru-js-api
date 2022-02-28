@@ -12,31 +12,29 @@ const searchPhone = async () => {
 const displayPhones = async (phones) => {
   const searchResult = document.getElementById('search-result');
   searchResult.innerText = '';
-  await phones.forEach((phone) => {
+  if (phones.length > 20) {
+    phones = phones.slice(0, 20);
+  }
+
+  await phones.forEach(({ brand, phone_name, slug, image }) => {
     const div = document.createElement('div');
     div.classList.add('col', 'd-flex', 'justify-content-center');
     div.innerHTML = `
-      <div class="card" style="width: 18rem">
+      <div class="card rounded-3" style="width: 18rem">
         <img
-          src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg"
-          class="card-img-top"
+          src="${image}"
+          class="card-img-top p-2"
           alt="..."
         />
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up
-            the bulk of the card's content.
-          </p>
+          <h5 class="card-title">Name: ${phone_name}</h5>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <li class="list-group-item">Brand: ${brand}</li>
         </ul>
         <div class="card-body">
           <a
-            href="#"
+            onclick="loadPhoneDetail('${slug}')"
             class="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#staticBackdrop"
@@ -47,4 +45,68 @@ const displayPhones = async (phones) => {
       `;
     searchResult.appendChild(div);
   });
+};
+
+const loadPhoneDetail = async (phoneSlug) => {
+  const url = `https://openapi.programming-hero.com/api/phone/${phoneSlug}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  displayPhoneDetail(data.data);
+};
+
+const displayPhoneDetail = async ({ name, image, releaseDate }) => {
+  //   console.log(phone);
+  const phoneDetail = document.getElementById('phone-detail');
+  phoneDetail.innerText = '';
+  const div = document.createElement('div');
+  div.classList.add('modal-content');
+  div.innerHTML = `
+    <div class="modal-header">
+    <h5 class="modal-title" id="staticBackdropLabel">${name}</h5>
+    <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+    ></button>
+    </div>
+    <div class="modal-body">
+    <div class="card mb-3" style="max-width: 540px">
+        <div class="row g-0">
+        <div class="col-md-4">
+            <img
+            src="${image}"
+            class="img-fluid rounded-start"
+            alt="..."
+            />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h5 class="card-title">${name} details</h5>
+            <p class="card-text">
+                This is a wider card with supporting text below as a
+                natural lead-in to additional content. This content is a
+                little bit longer.
+            </p>
+            <p class="card-text">
+                <small class="text-muted">Released on: ${
+                  releaseDate || 'Unknown'
+                }</small>
+            </p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button
+        type="button"
+        class="btn btn-danger"
+        data-bs-dismiss="modal"
+    >
+        Close
+    </button>
+    </div>
+  `;
+  phoneDetail.appendChild(div);
 };
