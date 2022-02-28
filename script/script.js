@@ -54,7 +54,12 @@ const loadPhoneDetail = async (phoneSlug) => {
   displayPhoneDetail(data.data);
 };
 
-const displayPhoneDetail = async ({ name, image, releaseDate }) => {
+const displayPhoneDetail = async ({
+  name,
+  image,
+  releaseDate,
+  mainFeatures,
+}) => {
   //   console.log(phone);
   const phoneDetail = document.getElementById('phone-detail');
   phoneDetail.innerText = '';
@@ -83,11 +88,12 @@ const displayPhoneDetail = async ({ name, image, releaseDate }) => {
         <div class="col-md-8">
             <div class="card-body">
             <h5 class="card-title">${name} details</h5>
+            <h6 class="card-title">Features</h6>
             <p class="card-text">
-                This is a wider card with supporting text below as a
-                natural lead-in to additional content. This content is a
-                little bit longer.
-            </p>
+                Storage: ${mainFeatures.storage} <br>
+                Display Size: ${mainFeatures.displaySize} <br>
+                Chipset: ${mainFeatures.chipset} <br>
+                Memory: ${mainFeatures.memory} <br>
             <p class="card-text">
                 <small class="text-muted">Released on: ${
                   releaseDate || 'Unknown'
