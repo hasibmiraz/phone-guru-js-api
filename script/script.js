@@ -59,6 +59,7 @@ const displayPhoneDetail = async ({
   image,
   releaseDate,
   mainFeatures,
+  others,
 }) => {
   //   console.log(phone);
   const phoneDetail = document.getElementById('phone-detail');
@@ -88,12 +89,24 @@ const displayPhoneDetail = async ({
         <div class="col-md-8">
             <div class="card-body">
             <h5 class="card-title">${name} details</h5>
-            <h6 class="card-title">Features</h6>
+            <h6 class="card-title text-primary">Features</h6>
             <p class="card-text">
-                Storage: ${mainFeatures.storage} <br>
-                Display Size: ${mainFeatures.displaySize} <br>
-                Chipset: ${mainFeatures.chipset} <br>
-                Memory: ${mainFeatures.memory} <br>
+                <strong>Storage:</strong> ${mainFeatures.storage} <br>
+                <strong>Display Size:</strong> ${mainFeatures.displaySize} <br>
+                <strong>Chipset:</strong> ${mainFeatures.chipset} <br>
+                <strong>Memory:</strong> ${mainFeatures.memory} <br>
+                <strong>Sensors:</strong> ${mainFeatures.sensors.map(
+                  (s) => s + ' '
+                )}
+            <p class="card-text">
+            <h6 class="card-title text-primary">Other Features</h6>
+            <p class="card-text">
+                <strong>WLAN:</strong> ${others.WLAN}<br>
+                <strong>Bluetooth:</strong> ${others.Bluetooth}<br>
+                <strong>GPS:</strong> ${others.GPS}<br>
+                <strong>NFC:</strong> ${others.NFC}<br>
+                <strong>Radio:</strong> ${others.Radio}<br>
+                <strong>USB:</strong> ${others.USB}
             <p class="card-text">
                 <small class="text-muted">Released on: ${
                   releaseDate || 'Unknown'
