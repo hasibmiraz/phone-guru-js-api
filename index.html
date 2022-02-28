@@ -19,18 +19,21 @@
         <a class="navbar-brand">Phone Guru</a>
         <form class="d-flex">
           <input
+            id="search-input"
             class="form-control me-2"
             type="search"
             placeholder="Search Your Phone..."
             aria-label="Search Your Phone..."
           />
-          <button class="btn btn-outline-primary" type="submit">Search</button>
+          <button onclick="searchPhone()" class="btn btn-outline-primary">
+            Search
+          </button>
         </form>
       </div>
     </nav>
     <!-- Navbar End -->
 
-    <!-- Vertically centered modal -->
+    <!-- Phone Details Modal -->
     <div
       class="modal fade"
       id="staticBackdrop"
@@ -92,8 +95,11 @@
 
     <!-- Mobile Cards -->
     <div class="container my-3">
-      <div class="row gx-2 gy-3">
-        <div class="col-12 col-lg-4 d-flex justify-content-center">
+      <div
+        id="search-result"
+        class="row row-cols-1 row-cols-md-3 g-4 mx-auto mb-3"
+      >
+        <!-- <div class="col-12 col-lg-4 d-flex justify-content-center">
           <div class="card" style="width: 18rem">
             <img
               src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-12.jpg"
@@ -183,7 +189,7 @@
               >
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- Bootstrap Script -->
@@ -193,5 +199,7 @@
       crossorigin="anonymous"
     ></script>
     <!-- Bootstrap Script -->
+    <!-- Manual Script -->
+    <script src="./script/script.js"></script>
   </body>
 </html>
