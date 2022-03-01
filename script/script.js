@@ -106,8 +106,8 @@ const displayPhoneDetail = async ({
                 <strong>Radio:</strong> ${others.Radio}<br>
                 <strong>USB:</strong> ${others.USB}
             <p class="card-text">
-                <small class="text-muted">Released on: ${
-                  releaseDate || 'Unknown'
+                <small class="text-muted">${
+                  releaseDate || 'Release Date: Unknown'
                 }</small>
             </p>
             </div>
