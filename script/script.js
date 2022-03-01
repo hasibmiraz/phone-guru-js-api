@@ -88,7 +88,7 @@ const displayPhoneDetail = async ({
         </div>
         <div class="col-md-8">
             <div class="card-body">
-            <h5 class="card-title">${name} details</h5>
+            <h5 class="card-title">Details</h5>
             <h6 class="card-title text-primary">Features</h6>
             <p class="card-text">
                 <strong>Storage:</strong> ${mainFeatures.storage} <br>
@@ -99,12 +99,24 @@ const displayPhoneDetail = async ({
             <p class="card-text">
             <h6 class="card-title text-primary">Other Features</h6>
             <p class="card-text">
-                <strong>WLAN:</strong> ${others.WLAN}<br>
-                <strong>Bluetooth:</strong> ${others.Bluetooth}<br>
-                <strong>GPS:</strong> ${others.GPS}<br>
-                <strong>NFC:</strong> ${others.NFC}<br>
-                <strong>Radio:</strong> ${others.Radio}<br>
-                <strong>USB:</strong> ${others.USB}
+                <strong>WLAN:</strong> ${
+                  others?.WLAN || 'Information Not Available'
+                }<br>
+                <strong>Bluetooth:</strong> ${
+                  others?.Bluetooth || 'Information Not Available'
+                }<br>
+                <strong>GPS:</strong> ${
+                  others?.GPS || 'Information Not Available'
+                }<br>
+                <strong>NFC:</strong> ${
+                  others?.NFC || 'Information Not Available'
+                }<br>
+                <strong>Radio:</strong> ${
+                  others?.Radio || 'Information Not Available'
+                }<br>
+                <strong>USB:</strong> ${
+                  others?.USB || 'Information Not Available'
+                }
             <p class="card-text">
                 <small class="text-muted">${
                   releaseDate || 'Release Date: Unknown'
