@@ -95,9 +95,7 @@ const displayPhoneDetail = async ({
                 <strong>Display Size:</strong> ${mainFeatures.displaySize} <br>
                 <strong>Chipset:</strong> ${mainFeatures.chipset} <br>
                 <strong>Memory:</strong> ${mainFeatures.memory} <br>
-                <strong>Sensors:</strong> ${mainFeatures.sensors.map(
-                  (s) => s + ' '
-                )}
+                <strong>Sensors:</strong> ${mainFeatures.sensors.join(', ')}
             <p class="card-text">
             <h6 class="card-title text-primary">Other Features</h6>
             <p class="card-text">
