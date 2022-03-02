@@ -1,4 +1,4 @@
-// Custom Function
+// Spinner View Function
 const toggleView = (id, removeProp, addProp) => {
   const spinner = document.getElementById(id);
   spinner.classList.remove(removeProp);
