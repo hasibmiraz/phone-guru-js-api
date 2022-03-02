@@ -113,39 +113,41 @@ const displayPhoneDetail = async ({
             <h6 class="card-title text-primary">Features</h6>
             <p class="card-text">
                 <strong>Storage:</strong> ${
-                  mainFeatures?.storage || 'Information uvailable'
+                  mainFeatures?.storage || 'Information unavailable'
                 } <br>
                 <strong>Display Size:</strong> ${
-                  mainFeatures?.displaySize || 'Information uvailable'
+                  mainFeatures?.displaySize || 'Information unavailable'
                 } <br>
                 <strong>Chipset:</strong> ${
-                  mainFeatures?.chipset || 'Information uvailable'
+                  mainFeatures?.chipset || 'Information unavailable'
                 } <br>
                 <strong>Memory:</strong> ${
-                  mainFeatures?.memory || 'Information uvailable'
+                  mainFeatures?.memory || 'Information unavailable'
                 } <br>
                 <strong>Sensors:</strong> ${
-                  mainFeatures?.sensors.join(', ') || 'Information uvailable'
+                  mainFeatures?.sensors.join(', ') || 'Information unavailable'
                 }
             <p class="card-text">
             <h6 class="card-title text-primary">Other Features</h6>
             <p class="card-text">
                 <strong>WLAN:</strong> ${
-                  others?.WLAN || 'Information uvailable'
+                  others?.WLAN || 'Information unavailable'
                 }<br>
                 <strong>Bluetooth:</strong> ${
-                  others?.Bluetooth || 'Information uvailable'
+                  others?.Bluetooth || 'Information unavailable'
                 }<br>
                 <strong>GPS:</strong> ${
-                  others?.GPS || 'Information uvailable'
+                  others?.GPS || 'Information unavailable'
                 }<br>
                 <strong>NFC:</strong> ${
-                  others?.NFC || 'Information uvailable'
+                  others?.NFC || 'Information unavailable'
                 }<br>
                 <strong>Radio:</strong> ${
-                  others?.Radio || 'Information uvailable'
+                  others?.Radio || 'Information unavailable'
                 }<br>
-                <strong>USB:</strong> ${others?.USB || 'Information uvailable'}
+                <strong>USB:</strong> ${
+                  others?.USB || 'Information unavailable'
+                }
             <p class="card-text">
                 <small class="text-muted">${
                   releaseDate || 'Release Date: Unknown'
