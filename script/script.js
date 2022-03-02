@@ -60,7 +60,7 @@ const displayPhones = async (phones) => {
     const div = document.createElement('div');
     div.classList.add('col', 'd-flex', 'justify-content-center');
     div.innerHTML = `
-      <div class="card rounded-3" style="width: 18rem">
+      <div class="card rounded-3 shadow-sm" style="width: 18rem">
         <img
           src="${image}"
           class="card-img-top p-2"
