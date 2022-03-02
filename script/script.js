@@ -10,16 +10,17 @@ const otherFeatures = (obj) => {
   let string = '';
   for (const key in obj) {
     if (Array.isArray(obj[key])) {
-      const value = `<strong>${
-        key.charAt(0).toUpperCase() + key.slice(1)
-      }:</strong> ${obj[key].join(', ')}`;
+      const value =
+        `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${obj[
+          key
+        ].join(', ')} <br>` || '';
       string += value;
     } else {
-      const val =
+      const value =
         `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${
           obj[key]
         } <br>` || '';
-      string += val;
+      string += value;
     }
   }
   return string;
