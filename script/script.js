@@ -5,6 +5,16 @@ const toggleView = (id, removeProp, addProp) => {
   spinner.classList.add(addProp);
 };
 
+// Other Features
+const otherFeatures = (obj) => {
+  let str = '';
+  for (const key in obj) {
+    const val = `<strong>${key}:</strong> ${obj[key]} <br>` || '';
+    str += val;
+  }
+  return str;
+};
+
 // Search Phone Function
 const searchPhone = async () => {
   const searchField = document.getElementById('search-input');
@@ -131,23 +141,9 @@ const displayPhoneDetail = async ({
             <p class="card-text">
             <h6 class="card-title text-primary">Other Features</h6>
             <p class="card-text">
-                <strong>WLAN:</strong> ${
-                  others?.WLAN || 'Information unavailable'
-                }<br>
-                <strong>Bluetooth:</strong> ${
-                  others?.Bluetooth || 'Information unavailable'
-                }<br>
-                <strong>GPS:</strong> ${
-                  others?.GPS || 'Information unavailable'
-                }<br>
-                <strong>NFC:</strong> ${
-                  others?.NFC || 'Information unavailable'
-                }<br>
-                <strong>Radio:</strong> ${
-                  others?.Radio || 'Information unavailable'
-                }<br>
-                <strong>USB:</strong> ${
-                  others?.USB || 'Information unavailable'
+                ${
+                  otherFeatures(others) ||
+                  '<strong>Information unavailable!</strong>'
                 }
             <p class="card-text">
                 <small class="text-muted">${
