@@ -1,5 +1,5 @@
 // Spinner View Function
-const toggleView = (id, removeProp, addProp) => {
+const toggleSpinner = (id, removeProp, addProp) => {
   const spinner = document.getElementById(id);
   spinner.classList.remove(removeProp);
   spinner.classList.add(addProp);
@@ -32,7 +32,7 @@ const searchPhone = async () => {
   const searchText = searchField.value;
   document.getElementById('error-msg').style.display = 'none';
 
-  toggleView('spinner', 'd-none', 'd-flex');
+  toggleSpinner('spinner', 'd-none', 'd-flex');
   document.getElementById('search-result').style.display = 'none';
 
   searchField.value = '';
@@ -41,7 +41,7 @@ const searchPhone = async () => {
   const data = await res.json();
   if (data.status === false) {
     document.getElementById('error-msg').style.display = 'block';
-    toggleView('spinner', 'd-flex', 'd-none');
+    toggleSpinner('spinner', 'd-flex', 'd-none');
   } else {
     displayPhones(data.data);
   }
@@ -50,7 +50,7 @@ const searchPhone = async () => {
 // Display Phone Function
 const displayPhones = async (phones) => {
   const searchResult = document.getElementById('search-result');
-  toggleView('spinner', 'd-none', 'd-flex');
+  toggleSpinner('spinner', 'd-none', 'd-flex');
   searchResult.innerText = '';
   if (phones.length > 20) {
     phones = phones.slice(0, 20);
@@ -85,7 +85,7 @@ const displayPhones = async (phones) => {
       `;
     searchResult.appendChild(div);
   });
-  toggleView('spinner', 'd-flex', 'd-none');
+  toggleSpinner('spinner', 'd-flex', 'd-none');
   document.getElementById('search-result').style.display = 'flex';
 };
 
