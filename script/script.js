@@ -5,24 +5,24 @@ const toggleView = (id, removeProp, addProp) => {
   spinner.classList.add(addProp);
 };
 
-// Other Features Function
+// Features Function
 const otherFeatures = (obj) => {
-  let str = '';
+  let string = '';
   for (const key in obj) {
     if (Array.isArray(obj[key])) {
-      const val = `<strong>${
+      const value = `<strong>${
         key.charAt(0).toUpperCase() + key.slice(1)
       }:</strong> ${obj[key].join(', ')}`;
-      str += val;
+      string += value;
     } else {
       const val =
         `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${
           obj[key]
         } <br>` || '';
-      str += val;
+      string += val;
     }
   }
-  return str;
+  return string;
 };
 
 // Search Phone Function
