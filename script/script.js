@@ -5,12 +5,22 @@ const toggleView = (id, removeProp, addProp) => {
   spinner.classList.add(addProp);
 };
 
-// Other Features
+// Other Features Function
 const otherFeatures = (obj) => {
   let str = '';
   for (const key in obj) {
-    const val = `<strong>${key}:</strong> ${obj[key]} <br>` || '';
-    str += val;
+    if (Array.isArray(obj[key])) {
+      const val = `<strong>${
+        key.charAt(0).toUpperCase() + key.slice(1)
+      }:</strong> ${obj[key].join(', ')}`;
+      str += val;
+    } else {
+      const val =
+        `<strong>${key.charAt(0).toUpperCase() + key.slice(1)}:</strong> ${
+          obj[key]
+        } <br>` || '';
+      str += val;
+    }
   }
   return str;
 };
@@ -122,22 +132,10 @@ const displayPhoneDetail = async ({
             <div class="card-body">
             <h5 class="card-title">Details</h5>
             <h6 class="card-title text-primary">Features</h6>
-            <p class="card-text">
-                <strong>Storage:</strong> ${
-                  mainFeatures?.storage || 'Information unavailable'
-                } <br>
-                <strong>Display Size:</strong> ${
-                  mainFeatures?.displaySize || 'Information unavailable'
-                } <br>
-                <strong>Chipset:</strong> ${
-                  mainFeatures?.chipset || 'Information unavailable'
-                } <br>
-                <strong>Memory:</strong> ${
-                  mainFeatures?.memory || 'Information unavailable'
-                } <br>
-                <strong>Sensors:</strong> ${
-                  mainFeatures?.sensors.join(', ') || 'Information unavailable'
-                }
+            <p class="card-text">${
+              otherFeatures(mainFeatures) ||
+              '<strong>Information unavailable!</strong>'
+            } 
             <p class="card-text">
             <h6 class="card-title text-primary">Other Features</h6>
             <p class="card-text">
