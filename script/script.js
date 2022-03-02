@@ -1,3 +1,11 @@
+// Custom Function
+const toggleSpinner = (removeProp, displayProp) => {
+  const spinner = document.getElementById('spinner');
+  spinner.classList.remove(removeProp);
+  spinner.classList.add(displayProp);
+};
+
+// Search Phone Function
 const searchPhone = async () => {
   const searchField = document.getElementById('search-input');
   const searchText = searchField.value;
@@ -9,8 +17,10 @@ const searchPhone = async () => {
   displayPhones(data.data);
 };
 
+// Display Phone Function
 const displayPhones = async (phones) => {
   const searchResult = document.getElementById('search-result');
+  toggleSpinner('d-none', 'd-flex');
   searchResult.innerText = '';
   if (phones.length > 20) {
     phones = phones.slice(0, 20);
@@ -44,9 +54,12 @@ const displayPhones = async (phones) => {
     </div>
       `;
     searchResult.appendChild(div);
+
+    toggleSpinner('d-flex', 'd-none');
   });
 };
 
+// Load Phone Detail Function
 const loadPhoneDetail = async (phoneSlug) => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneSlug}`;
   const res = await fetch(url);
@@ -100,23 +113,21 @@ const displayPhoneDetail = async ({
             <h6 class="card-title text-primary">Other Features</h6>
             <p class="card-text">
                 <strong>WLAN:</strong> ${
-                  others?.WLAN || 'Information Not Available'
+                  others?.WLAN || 'Information uvailable'
                 }<br>
                 <strong>Bluetooth:</strong> ${
-                  others?.Bluetooth || 'Information Not Available'
+                  others?.Bluetooth || 'Information uvailable'
                 }<br>
                 <strong>GPS:</strong> ${
-                  others?.GPS || 'Information Not Available'
+                  others?.GPS || 'Information uvailable'
                 }<br>
                 <strong>NFC:</strong> ${
-                  others?.NFC || 'Information Not Available'
+                  others?.NFC || 'Information uvailable'
                 }<br>
                 <strong>Radio:</strong> ${
-                  others?.Radio || 'Information Not Available'
+                  others?.Radio || 'Information uvailable'
                 }<br>
-                <strong>USB:</strong> ${
-                  others?.USB || 'Information Not Available'
-                }
+                <strong>USB:</strong> ${others?.USB || 'Information uvailable'}
             <p class="card-text">
                 <small class="text-muted">${
                   releaseDate || 'Release Date: Unknown'
