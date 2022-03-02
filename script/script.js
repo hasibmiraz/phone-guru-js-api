@@ -76,6 +76,7 @@ const loadPhoneDetail = async (phoneSlug) => {
   displayPhoneDetail(data.data);
 };
 
+// Show Phone Detail
 const displayPhoneDetail = async ({
   name,
   image,
