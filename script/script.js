@@ -9,6 +9,7 @@ const toggleView = (id, removeProp, addProp) => {
 const searchPhone = async () => {
   const searchField = document.getElementById('search-input');
   const searchText = searchField.value;
+  document.getElementById('error-msg').style.display = 'none';
 
   toggleView('spinner', 'd-none', 'd-flex');
   document.getElementById('search-result').style.display = 'none';
@@ -17,7 +18,12 @@ const searchPhone = async () => {
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   const res = await fetch(url);
   const data = await res.json();
-  displayPhones(data.data);
+  if (data.status === false) {
+    document.getElementById('error-msg').style.display = 'block';
+    toggleView('spinner', 'd-flex', 'd-none');
+  } else {
+    displayPhones(data.data);
+  }
 };
 
 // Display Phone Function
