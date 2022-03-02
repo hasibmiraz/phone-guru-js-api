@@ -1,15 +1,18 @@
 // Custom Function
-const toggleSpinner = (removeProp, displayProp) => {
-  const spinner = document.getElementById('spinner');
+const toggleView = (id, removeProp, addProp) => {
+  const spinner = document.getElementById(id);
   spinner.classList.remove(removeProp);
-  spinner.classList.add(displayProp);
+  spinner.classList.add(addProp);
 };
 
 // Search Phone Function
 const searchPhone = async () => {
   const searchField = document.getElementById('search-input');
   const searchText = searchField.value;
-  //   console.log(searchText);
+
+  toggleView('spinner', 'd-none', 'd-flex');
+  document.getElementById('search-result').style.display = 'none';
+
   searchField.value = '';
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   const res = await fetch(url);
@@ -20,7 +23,7 @@ const searchPhone = async () => {
 // Display Phone Function
 const displayPhones = async (phones) => {
   const searchResult = document.getElementById('search-result');
-  toggleSpinner('d-none', 'd-flex');
+  toggleView('spinner', 'd-none', 'd-flex');
   searchResult.innerText = '';
   if (phones.length > 20) {
     phones = phones.slice(0, 20);
@@ -54,9 +57,9 @@ const displayPhones = async (phones) => {
     </div>
       `;
     searchResult.appendChild(div);
-
-    toggleSpinner('d-flex', 'd-none');
   });
+  toggleView('spinner', 'd-flex', 'd-none');
+  document.getElementById('search-result').style.display = 'flex';
 };
 
 // Load Phone Detail Function
@@ -74,7 +77,6 @@ const displayPhoneDetail = async ({
   mainFeatures,
   others,
 }) => {
-  //   console.log(phone);
   const phoneDetail = document.getElementById('phone-detail');
   phoneDetail.innerText = '';
   const div = document.createElement('div');
@@ -104,11 +106,21 @@ const displayPhoneDetail = async ({
             <h5 class="card-title">Details</h5>
             <h6 class="card-title text-primary">Features</h6>
             <p class="card-text">
-                <strong>Storage:</strong> ${mainFeatures.storage} <br>
-                <strong>Display Size:</strong> ${mainFeatures.displaySize} <br>
-                <strong>Chipset:</strong> ${mainFeatures.chipset} <br>
-                <strong>Memory:</strong> ${mainFeatures.memory} <br>
-                <strong>Sensors:</strong> ${mainFeatures.sensors.join(', ')}
+                <strong>Storage:</strong> ${
+                  mainFeatures?.storage || 'Information uvailable'
+                } <br>
+                <strong>Display Size:</strong> ${
+                  mainFeatures?.displaySize || 'Information uvailable'
+                } <br>
+                <strong>Chipset:</strong> ${
+                  mainFeatures?.chipset || 'Information uvailable'
+                } <br>
+                <strong>Memory:</strong> ${
+                  mainFeatures?.memory || 'Information uvailable'
+                } <br>
+                <strong>Sensors:</strong> ${
+                  mainFeatures?.sensors.join(', ') || 'Information uvailable'
+                }
             <p class="card-text">
             <h6 class="card-title text-primary">Other Features</h6>
             <p class="card-text">
